@@ -41,7 +41,19 @@ class MaskGenerator:
                     mask[mask_i_resized > 0] = 255
 
         return mask
+    
+    def visualize(self, source_image, mask):
+        """
+        Параметры:
+            - source_image (numpy.array): Оригинальная картинка
+            - mask(numpy.array): Сгенерированная маска
+        Возвращает:
+            - overlay (numpy.array): Наложенная маска на картинку
+        """
+        overlay = cv2.addWeighted(source_image, 0.7, mask, 0.3, 0)
 
+        return overlay
+    
     def generate_mask(self, image):
         """
         Выполняет полный процесс: инференс и создание маски.

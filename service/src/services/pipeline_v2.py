@@ -4,7 +4,7 @@ import numpy as np
 
 from src.services.segmentation_detection import MaskGenerator
 
-class FirstPipeline:
+class SecondPipeline:
     def __init__(
         self,
         segmentation_detector: MaskGenerator,
@@ -17,6 +17,8 @@ class FirstPipeline:
         """
         self._segmentation_detector = segmentation_detector
 
+    
+    
     def predict(self, image: np.ndarray) -> tp.List[str]:
         """
         Выполняет предсказание нормализованного cегментации на изображении.
@@ -29,4 +31,6 @@ class FirstPipeline:
         """
         mask = self._segmentation_detector.generate_mask(image)
         
-        return mask
+        image_with_mask = self._segmentation_detector.visualize(image, mask)
+        
+        return image_with_mask
