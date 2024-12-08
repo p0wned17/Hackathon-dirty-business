@@ -1,0 +1,6 @@
+# Нужно указать абсолютные пути
+train: ./dataset_for_training_yolo/images/train
+val: ./dataset_for_training_yolo/images/val
+
+nc: 1  # Обновите количество классов (1 для загрязнения)
+names: ['contaminated']  # Обновите названия классов

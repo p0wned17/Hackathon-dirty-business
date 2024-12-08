@@ -1,5 +1,4 @@
 .PHONY: *
-DATASET_FOLDER := output
 DOCKER_TAG := latest
 DOCKER_IMAGE := hackathon_train_env
 CONTAINER_NAME := hackathon_train_env
@@ -20,13 +19,16 @@ docker_run:
 
 download_dataset:
 	python yandex_downloader.py -l https://disk.yandex.ru/d/6SZgY9PQm7xP2A
-	unzip train_dataset.zip
-	mv train_dataset $(DATASET_FOLDER)
-	rm train_dataset.zip
+	unzip '2 задача.zip'
+	unzip '2 задача/train_dataset.zip' 
+	rm -rf '2 задача'
+	rm -rf cv_synt_dataset
+	rm -rf baseline
 	python convert_dataset.py
+	rm -rf cv_open_dataset
 
 train:
-	PYTHONPATH=. python src/train_yolo/train_yolo.py
+	python src/train_yolo/train_yolo.py
 
 inference:
 	PYTHONPATH=. python inference/inference.py

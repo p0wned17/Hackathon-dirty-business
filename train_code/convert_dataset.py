@@ -4,9 +4,9 @@ import shutil
 from sklearn.model_selection import train_test_split
 import numpy as np
 
-IMAGES_DIR = 'output'  # Путь к вашему датасету с изображениями
-MASKS_DIR = 'output'  # Путь к вашему датасету с масками
-OUTPUT_DIR = '../dataset_for_training_yolo'  # Путь к выходной директории
+IMAGES_DIR = 'cv_open_dataset/open_img'  # Путь к вашему датасету с изображениями
+MASKS_DIR = 'cv_open_dataset/open_msk'  # Путь к вашему датасету с масками
+OUTPUT_DIR = 'dataset_for_training_yolo'  # Путь к выходной директории
 TRAIN_SIZE = 0.8  # Процент обучающей выборки
 
 os.makedirs(os.path.join(OUTPUT_DIR, 'images/train'), exist_ok=True)
@@ -66,3 +66,4 @@ for img in val_images:
     shutil.copy(os.path.join(IMAGES_DIR, img), os.path.join(OUTPUT_DIR, 'images/val', img))
     mask_name = img.replace('.jpg', '.png')
     convert_mask_to_yolo(os.path.join(MASKS_DIR, mask_name), 'labels/val')
+
