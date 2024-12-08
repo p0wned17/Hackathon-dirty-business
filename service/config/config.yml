@@ -1,0 +1,4 @@
+segmentation_detector:
+    model_path: 'weights/best.pt'
+    image_size: 640
+    conf: 0.5
