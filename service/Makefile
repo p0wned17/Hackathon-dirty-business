@@ -8,3 +8,9 @@ run_app:
 
 locust_test:
 	locust -f locustfile.py --host=http://localhost:8888 --csv=results --logfile=locust.log
+
+run_app_docker:
+	docker run --ipc=host --network=host --gpus=all --name detector_segment --restart always -d detector_segment:latest
+
+docker_build:
+	docker build -f Dockerfile . --force-rm=true -t detector_segment:latest

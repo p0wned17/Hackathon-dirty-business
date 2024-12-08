@@ -14,7 +14,7 @@ class MaskGenerator:
         Выполняет инференс на входном изображении.
         """
         # Выполняем инференс
-        return self.model(image)
+        return self.model(image, verbose=False)
 
     def create_mask(self, image, results):
         """
